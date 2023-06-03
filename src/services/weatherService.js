@@ -8,4 +8,15 @@ export default {
     const url = `${BASE_URL}/forecast?q=${cityName}&appid=${API_KEY}`;
     return axios.get(url);
   },
+
+  async fetchCityNames(query) {
+    try{
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&mode=json&appid=YOUR_API_KEY`)
+      const cities = response.data.list.map(city => city.name)
+      return cities
+    } catch (err){
+      console.error(err);
+      return []
+    }
+  }
 };

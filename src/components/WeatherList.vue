@@ -39,7 +39,7 @@ h2 {
 .weather-list {
     padding-top: 50px;
     display: flex;
-    justify-content:center;
+    justify-content: space-around;
     gap: 30px;
 }
 
