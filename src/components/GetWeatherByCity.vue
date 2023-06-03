@@ -3,12 +3,13 @@
     <input type="text" v-model="city" placeholder="City Name" />
     <button @click="getWeather" class="weatherButton">Get Weather</button>
   </div>
-  <ShowWeather :weather="weather"/>
+  <WeatherList :weather="weather"/>
 </template>
 
 <script>
 import weatherService from "../services/weatherService";
 import ShowWeather from "./ShowWeather.vue";
+import WeatherList from './WeatherList.vue';
 
 export default {
   data() {
@@ -34,7 +35,8 @@ export default {
     },
   },
   components: {
-    ShowWeather
+    ShowWeather,
+    WeatherList
   }
 };
 </script>
@@ -67,6 +69,29 @@ input[type="text"]:hover {
 }
 
 input[type="text"]:focus{
+    border-color: #e6ff04;
+    background: #fff;
+};
+
+input[type="number"] {
+    font-size: 14px;
+    border-radius: 6px;
+    line-height: 1.5;
+    padding: 5px 10px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    color: rgb(14, 14, 16);
+    background: #dee1e2;
+    display: flex;
+    height: 20px; 
+    
+}
+
+input[type="number"]:hover {
+    border-color: #ccc;
+}
+
+input[type="number"]:focus{
     border-color: #e6ff04;
     background: #fff;
 };
