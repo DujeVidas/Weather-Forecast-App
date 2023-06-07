@@ -1,7 +1,7 @@
 <template>
-  <div class="getInput">
-    <input type="text" v-model="city" placeholder="City Name" @keyup.enter="getWeather" />
-    <button @click="getWeather" class="weatherButton">Get Weather</button>
+  <div class="pt-8 flex justify-center gap-8">
+    <input class="text-sm hover:border-[#42b983] focus:bg-white focus:outline-none focus:border-[#42b983] text-[#0E0E10] h-5 bg-[#dee1e2] rounded-md py-1 px-2 border-2 border-[#dee1e2] border-solid" type="text" v-model="city" placeholder="City Name" @keyup.enter="getWeather" />
+    <button @click="getWeather" class="hover:bg-[#0000001a] outline-none text-[#0e0e10] py-0 px-5 bg-[#0000000d] h-9 text-sm rounded  font-semibold cursor-pointer border-none">Get Weather</button>
   </div>
   <WeatherList :weather="weather" />
 </template>
@@ -41,50 +41,10 @@ export default {
 </script>
 
 <style scoped>
-.getInput {
-  padding-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
+
 input[type="text"] {
-  font-size: 14px;
-  border-radius: 6px;
-  line-height: 1.5;
-  padding: 5px 10px;
   transition: box-shadow 100ms ease-in, border 100ms ease-in,
     background-color 100ms ease-in;
-  border: 2px solid #dee1e2;
-  color: rgb(14, 14, 16);
-  background: #dee1e2;
-  display: flex;
-  height: 20px;
 }
 
-input[type="text"]:hover {
-  border-color: #ccc;
-}
-
-input[type="text"]:focus {
-  border-color: #e6ff04;
-  background: #fff;
-}
-
-.weatherButton {
-  display: flex;
-  outline: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  border-radius: 4px;
-  font-size: 13px;
-  height: 35px;
-  background-color: #0000000d;
-  color: #0e0e10;
-  padding: 0 20px;
-  align-items: center;
-}
-.weatherButton:hover {
-  background-color: #0000001a;
-}
 </style>

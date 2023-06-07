@@ -1,5 +1,5 @@
 <template>
-  <div v-if="weather" class="weatherCard" :class="weatherClass">
+  <div v-if="weather" class="weatherCard p-5 rounded-lg text-[#fff] font-bold flex items-center justify-center text-center w-40 h-40 flex-col" :class="weatherClass">
     <p>
       {{ weather.list[index].main.temp }}
       <Icon
@@ -17,14 +17,25 @@
       {{ weather.list[index].wind.speed }}
       <Icon icon="svg-spinners:wind-toy" color="white" heigth="20" width="20" />
     </p>
-    <p>{{ weather.list[index].weather[0].main }} <Icon :icon="ikona" heigth="20" width="20" ></Icon></p>
+    <p>
+      {{ weather.list[index].weather[0].main }}
+      <Icon :icon="ikona" heigth="20" width="20"></Icon>
+    </p>
   </div>
 </template>
 
 <script>
 import { Icon } from "@iconify/vue";
 
-const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday']
+const dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export default {
   props: {
@@ -50,7 +61,7 @@ export default {
         this.ikona = "emojione-v1:cloud";
         return "cloudy";
       } else if (this.weather.list[this.index].weather[0].main == "Clear") {
-        this.ikona = "openmoji:sun"
+        this.ikona = "openmoji:sun";
         return "clear";
       }
     },
@@ -58,28 +69,15 @@ export default {
   components: {
     Icon,
   },
-
-  
 };
 
-var d = new Date()
-console.log(dayNames[d.getDay()])
+var d = new Date();
+console.log(dayNames[d.getDay()]);
 </script>
 
 <style scoped>
 .weatherCard {
-  padding: 20px;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   transition: background-color 0.3s ease;
-  width: 150px;
-  height: 150px;
 }
 .rainy {
   background: linear-gradient(
