@@ -17,7 +17,7 @@ export default {
   @apply text-center;
 }
 *{
-  margin: 0;
+  @apply m-0
 }
 
 </style>

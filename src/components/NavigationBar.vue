@@ -10,8 +10,8 @@
         />
       </div>
       <div class="flex gap-5">
-        <router-link class="font-bold text-[#333] no-underline hover:text-[#42b983]" to="/">Home</router-link>
-        <router-link class="font-bold text-[#333] no-underline hover:text-[#42b983]" to="/about">About</router-link>
+        <router-link class="font-bold text-[#333] no-underline hover:text-[#42b983] transition-colors duration-300" to="/">Home</router-link>
+        <router-link class="font-bold text-[#333] no-underline hover:text-[#42b983] transition-colors duration-300" to="/about">About</router-link>
       </div>
     </nav>
   </header>
@@ -30,10 +30,7 @@ export default {
 
 <style scoped>
 
-nav a {
-  transition: color 0.3s;
-}
 nav a.router-link-exact-active {
-  color: #42b983;
+  @apply text-[#42b983]
 }
 </style>
