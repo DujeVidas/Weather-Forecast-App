@@ -1,5 +1,9 @@
 <template>
-  <div v-if="weather" class="weatherCard p-5 rounded-lg text-[#fff] font-bold flex items-center justify-center text-center w-40 h-40 flex-col" :class="weatherClass">
+  <div
+    v-if="weather"
+    class="weatherCard p-5 rounded-lg text-[#fff] font-bold flex items-center justify-center text-center w-40 h-40 flex-col"
+    :class="weatherClass"
+  >
     <p>
       {{ weather.list[index].main.temp }}
       <Icon
@@ -24,55 +28,32 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { Icon } from "@iconify/vue";
+import { computed } from "@vue/reactivity";
+import { ref } from "vue";
 
-const dayNames = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+const ikona = ref("");
+const props = defineProps({
+  weather: Object,
+  index: {
+    type: Number,
+    default: 0,
+  },
+});
 
-export default {
-  props: {
-    weather: {
-      type: Object,
-    },
-    index: {
-      type: Number,
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      ikona: "",
-    };
-  },
-  computed: {
-    weatherClass() {
-      if (this.weather.list[this.index].weather[0].main == "Rain") {
-        this.ikona = "noto-v1:cloud-with-lightning-and-rain";
-        return "rainy";
-      } else if (this.weather.list[this.index].weather[0].main == "Clouds") {
-        this.ikona = "emojione-v1:cloud";
-        return "cloudy";
-      } else if (this.weather.list[this.index].weather[0].main == "Clear") {
-        this.ikona = "openmoji:sun";
-        return "clear";
-      }
-    },
-  },
-  components: {
-    Icon,
-  },
-};
-
-var d = new Date();
-console.log(dayNames[d.getDay()]);
+const weatherClass = computed(() => {
+  if (props.weather.list[props.index].weather[0].main == "Rain") {
+    ikona.value = "noto-v1:cloud-with-lightning-and-rain";
+    return "rainy";
+  } else if (props.weather.list[props.index].weather[0].main == "Clouds") {
+    ikona.value = "emojione-v1:cloud";
+    return "cloudy";
+  } else if (props.weather.list[props.index].weather[0].main == "Clear") {
+    ikona.value = "openmoji:sun";
+    return "clear";
+  }
+});
 </script>
 
 <style scoped>
